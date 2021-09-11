@@ -13,6 +13,7 @@ services:
       - .:/test_env
     command: jupyter notebook --port=8888 --no-browser --allow-root --ip=0.0.0.0 --NotebookAp.token=
 
+
   docker_flask:
     build:
       context: .
