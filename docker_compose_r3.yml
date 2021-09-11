@@ -1,0 +1,25 @@
+# This allows us to install a custom python package
+version: '3'
+services:
+  jupyter:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: customimage
+    ports:
+      - 8888:8888 # local: container
+    working_dir: /test_env
+    volumes:
+      - .:/test_env
+    command: jupyter notebook --port=8888 --no-browser --allow-root --ip=0.0.0.0 --NotebookAp.token=
+
+  docker_flask:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: customimage
+    ports:
+     - 8080:8080
+    volumes:
+     - ./api:/api
+    command: python /api/server.py

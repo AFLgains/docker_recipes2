@@ -1,0 +1,10 @@
+version: '3'
+services:
+  docker_jupyter:
+    image: jupyter/base-notebook
+    ports:
+      - 8888:8888 # local: container
+    working_dir: /test_env
+    volumes:
+      - .:/test_env
+    command: jupyter notebook --port=8888 --no-browser --allow-root --ip=0.0.0.0 --NotebookApp.token=
